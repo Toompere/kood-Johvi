@@ -1,0 +1,93 @@
+{{ define "details" }}
+<div id="details" class="overlay">
+    <div class="popup">
+        <a class="close" href="#">&times;</a>
+        <table class="bandinfo">
+            <tr>
+                <td class="imgcol">
+                    <img class="detailimg" id="{{ .Details.Id  }}" src="{{ .Details.Image  }}" alt="Image">
+                </td>
+                <td>
+                    <table>
+                        <tr>
+                            <h1 class="detailname">
+                                {{ .Details.Name }}
+                            </h1>
+                            <tr>
+                                <td class="detailmembers">
+                                    <table style="margin-right: 20px;">
+                                        <th class="detailhead">Members:</th>
+                                        <tr>
+                                            <td>
+                                                {{ range .Details.Members }}
+                                                    {{ . }}
+                                                    <br>
+                                                {{ end }}
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td class="detailcdfa">
+                                    <table>
+                                        <tr><th>Creation Date:</th></tr>
+                                        <tr><td>{{ .Details.CreationDate }}</td></tr>
+                                        <tr><td><br></td></tr>
+                                        <tr><th>First Album:</th></tr>
+                                        <tr><td>{{ .Details.FirstAlbum }}</td></tr>
+                                    </table>    
+                                </td>
+                            </tr>
+                        </tr>
+                    </table>                 
+                </td>
+            </tr>
+        </table>
+
+		<table class="locinfo">
+            <tr> 
+                <td>
+                    <table class="detailloc">
+                        <tr>
+                            <th class="detailhead">Locations:</th>
+                            <th class="detailhead">Dates:</th>
+                        </tr>
+                        {{ range $key, $value := .Details.Relation }}
+                        <tr>
+                            <td class="detailkey">{{ $key }}:</td>
+                            <td>
+                                {{ range $value }}
+                                {{ . }}
+                                <br>
+                                {{ end }}
+                            </td>
+                        </tr>
+                        <tr><td><br></td></tr>
+                        {{ end }}
+                    </table>
+                </td>
+                <td class="detailmap">
+                    <div id="map"></div>
+                    <script
+                    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly"
+                    defer
+                    ></script>
+                </td>
+            </tr>        
+        </table>
+        
+    <script>
+        var locations = [
+        {{ range .Details.Coordinates }}
+        {
+            position: { lat: {{ .Lat }}, lng: {{ .Lng }} },
+            title: '{{ .Name }}'
+        },
+                    {{ end}}
+        ];
+        
+    </script>
+    </div>
+</div>
+  
+{{ end}}
+

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, width=device-width">
+
+        <title>ASCII Art Web</title>
+
+    </head>
+
+    <body>
+        <div style="text-align: center">
+            <h1>ASCII Art Web</h1>
+        <form action="/ascii-art" method="post">
+            <div style="line-height: 200%">
+                <textarea autofocus placeholder="Enter text..." id="textInput" name="textInput" rows="5" cols="50">{{ .Place }}</textarea>
+            </div>
+            <div>
+                <input checked="checked" id="standard" name="banner" type="radio" value="standard">
+                <label for="standard">Standard</label>
+            </div>
+            <div>
+                <input  id="shadow" name="banner" type="radio"  value="shadow">
+                <label for="shadow">Shadow</label>
+            </div>
+            <div>
+                <input  id="thinkertoy" name="banner" type="radio" value="thinkertoy">
+                <label for="thinkertoy">Thinkertoy</label>
+            </div>
+            <div style="line-height: 300%">
+            <button type="submit">Submit</button>
+            </div>
+        </form>
+        </div>
+        
+        <pre style="line-height:60%;text-align: left;display: flex;flex-direction: column; align-items: center">{{ range .Asciitext}}
+{{ . }}
+{{ end }}
+    </pre>
+
+    </body>
+
+</html>

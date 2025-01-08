@@ -1,0 +1,36 @@
+{{ define "search" }}
+    <form method="POST">
+        <input type="search" name="search" id="search" placeholder="Search..." list="groupie">
+        <datalist id="groupie" onclick="this.form.submit()">
+                {{ range $key, $val := .Search.Name}}
+                    <option>{{ $key }} - artist/band</option>
+                {{ end}}
+                {{ range $key, $val := .Search.Members}}
+                    <option>{{ $key }} - member</option>
+                {{ end}}
+                {{ range $key, $val := .Search.Location}}
+                    <option>{{ $key }} - location</option>
+                {{ end}}
+                {{ range $key, $val := .Search.FirstAlbum }}
+                    <option>{{ $key }} - first album</option>
+                {{ end}}
+                {{ range $key, $val := .Search.CreationDate }}
+                    <option>{{ $key }} - creation date</option>
+                {{ end}}
+        </datalist>
+    </form>
+
+
+    <!-- Script automatically submits form if option is selected from datalist -->
+<script>
+    var textbox = document.getElementById("search");
+textbox.addEventListener("input", function(e){
+    
+    var isInputEvent = (Object.prototype.toString.call(e).indexOf("InputEvent") > -1);
+    
+    if(!isInputEvent)
+        textbox.form.submit();
+    }, false);
+</script>
+ 
+{{ end }}

@@ -1,0 +1,264 @@
+body {
+  background-image: url(background.png);
+  color: azure;
+  text-align: center;
+}
+
+button {
+  cursor: pointer;
+}
+
+.home {
+  margin: 10px;
+}
+
+.hometext {
+  text-decoration: none;
+  font-size: 45px;
+  color: azure;
+}
+
+.hometext:hover {
+  color: #8a8a8a;
+}
+
+input::placeholder {
+  color: rgba(240, 255, 255, 0.473)
+}
+
+/* Search */
+
+  input[type="search"] {
+    background-color: rgb(78, 78, 78);
+    height: 30px;
+    width: 250px;
+    border-radius: 13px;
+    padding: 10px;
+    margin: 20px;
+    color: azure;
+  }
+
+/* Filter */
+
+  /* Filters toggle button */
+
+  #filter {
+    background-color: rgb(78, 78, 78);
+    height: 30px;
+    width: 100px;
+    font-size: 18px;
+    border-radius: 13px;
+    color: azure;
+  }
+
+  /* Sliders */
+
+  .slider {
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    width: 30%;
+    position: relative;
+  }
+  
+  input[type=range]::-webkit-slider-thumb {
+    pointer-events: all;
+  }
+  
+  input[type=range]::-moz-range-thumb {
+    pointer-events: all;
+  }
+   
+  input[type="range"] {
+    height: 2px;
+    width: 100%;
+    position: absolute;
+    cursor: pointer;
+    pointer-events: none;
+  }
+  
+  #fromSliderCD, #fromSliderFA {
+    height: 0;
+    z-index: 1;
+  }
+  
+  .sliderhead {
+    margin-top: 40px;
+    margin-bottom: 30px;
+  }
+  
+  #fromValueCD, #fromValueFA {
+    position: absolute;
+    margin-top: 25px;
+    left: 0;
+  }
+  
+  #toValueCD, #toValueFA {
+    position: absolute;
+    margin-top: 25px;
+    right: 0;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  /* Checkboxes */
+
+  .memberlocation{
+    width: 30%;
+    margin-top: 40px;
+    margin-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  label, input[type="checkbox"]{
+    cursor: pointer;
+  }
+
+  /* Location textinput */
+
+  input[type="text"] {
+    background-color: rgb(78, 78, 78);
+    border-radius: 13px;
+    height: 10px;
+    padding: 10px;
+    color: azure
+  }
+  
+ /* Details */
+ 
+  /* Popup & overlay */
+
+  .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.9);
+    transition: opacity 500ms;
+    visibility: hidden;
+    display: flex;
+    opacity: 0;
+  }
+
+  .overlay:target {
+    backdrop-filter: blur(8px);
+    visibility: visible;
+    opacity: 1;
+  }
+  
+  .popup {
+    position: relative;
+    margin: 30px auto;
+    padding: 10px;
+    background: rgb(58, 58, 58);
+    border-radius: 5px;
+    width: -moz-fit-content;
+    width: fit-content;
+    max-height: -moz-fit-content;
+    max-height: fit-content;
+    overflow: auto;
+  }
+  
+  .popup .close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    transition: all 200ms;
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    color: azure;
+  }
+
+  .popup .close:hover {
+    color: #8a8a8a;
+  }
+
+/* Table */
+
+.bandinfo, .locinfo {
+  padding: 30px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.detailmembers, .detailcdfa , .detailkey, .detailmap{
+  vertical-align: top;
+}
+
+  /* Image */
+
+  .detailimg {
+    border-radius: 50%;
+    margin-right: 50px;
+  }
+  
+  /* Name */
+
+  .bandname {
+    text-align: center;
+    font-size: larger;
+  }
+
+  /* Location */
+
+  .detailloc {
+    margin-top: 0;
+    margin-right: 50px;
+  }
+
+  /* Map */
+
+  #map {
+    height: 400px;
+    width: 500px; 
+    border-radius: 10px;
+  }
+
+/* Artists */
+
+.container {
+  width: 90%;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.indexbtn {
+  background: none;
+  color: azure;
+  border: 0;
+  margin: 15px;
+}
+
+.bandimage {
+  border-radius: 20px;
+}
+
+/* Scrollbar */
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(58, 58, 58);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(240, 255, 255, 0.808);
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(83, 83, 83);
+}

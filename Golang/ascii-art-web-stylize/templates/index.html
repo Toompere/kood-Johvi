@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, width=device-width">
+
+        <link href="/static/favicon.ico" rel="icon">
+        <link href="/static/styles.css" rel="stylesheet">
+
+        <title>ASCII Art Web Stylize</title>
+
+    </head>
+
+    <body>
+        <h1>ASCII Art Web Stylize</h1>
+        <div id="inputform">
+        <form action="/ascii-art" method="post">
+            <div style="line-height: 200%">
+                <textarea autofocus placeholder="Enter text..." id="textInput" name="textInput" rows="5" cols="45">{{ .Place }}</textarea>
+            </div>
+            <select id="banner" name="banner">
+                <option id="choosebanner" selected disabled>Choose a banner</option>
+                <option value="standard">Standard</option>
+                <option value="shadow">Shadow</option>
+                <option value="thinkertoy">Thinkertoy</option>
+            </select>
+            <div>
+            <button id="subbtn" type="submit">Submit</button>
+            </div>
+        </form>
+        </div>        
+        <pre id="outpre">{{ range .Asciitext}}
+{{ . }}
+{{ end }}
+    </pre>
+    </body>
+
+</html>

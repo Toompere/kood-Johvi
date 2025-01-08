@@ -1,0 +1,108 @@
+{{ define "filter" }}
+<button id="filter">Filters &#8597</button>
+<form id="filterform" class="hidden" action="/" method="POST">
+    <h3 class="sliderhead">Creation Date</h3>
+    <div class="slider">
+        {{ $min := index .Search.CreationList 0 }}
+        <p id="fromValueCD">{{ $min }}</p>
+        <input id="fromSliderCD" name="cmin" type="range" min="{{ $min }}" max="2023" value="0">
+        <input id="toSliderCD" name="cmax" type="range" min="{{ $min }}" max="2023" value="2023">
+        <p id="toValueCD">2023</p>
+    </div>
+    <h3 class="sliderhead">First Album</h3>  
+    <div class="slider"> 
+        <input id="fromSliderFA" name="famin" type="range" min="{{ $min }}" max="2023" value="0">
+        <input id="toSliderFA" name="famax" type="range" min="{{ $min }}" max="2023" value="2023">
+        <p id="fromValueFA">{{ $min }}</p>
+        <p id="toValueFA">2023</p>
+    </div>   
+    <table class="memberlocation">
+        <tr>
+            <th><h3>Members</h3></th>
+            <th><h3>Location</h3></th>
+        </tr>
+        <tr>
+            <td>
+                <div class="memberfilter">      
+                    <label><input type="checkbox"  name="members" value="1">1</label>
+                    <label><input type="checkbox"  name="members" value="2">2</label>
+                    <label><input type="checkbox"  name="members" value="3">3</label>
+                    <label><input type="checkbox"  name="members" value="4">4</label>
+                    <label><input type="checkbox"  name="members" value="5">5</label>
+                    <label><input type="checkbox"  name="members" value="6">6</label>
+                    <label><input type="checkbox"  name="members" value="7">7</label>
+                </div>
+            </td>
+            <td>
+                <div>
+                    <input type="text" name="location" placeholder="Enter location..." list="location">
+                    <datalist id="location">
+                            {{ range $key, $val := .Search.Location}}
+                                <option value="{{ $key }}"></option>
+                            {{ end}}
+                    </datalist>
+                </div>
+            </td>
+        </tr>
+    </table>
+    
+    <button id="filter" type="submit">Filter</button>  
+</form>
+<script>
+    const filterButton = document.querySelector("#filter");
+    const filterForm = document.querySelector("#filterform");
+
+    filterButton.addEventListener("click", function() {
+        filterForm.classList.toggle("hidden");
+        toggleFormButton.textContent = filterForm.classList.contains("hidden") ?
+        "show form" : "Hide form";
+    });
+
+    function controlFromSlider(fromSlider, toSlider, fromValue) {
+  const [from, to] = getParsed(fromSlider, toSlider)
+  if (from > to) {
+    fromSlider.value = to;
+    fromValue.innerHTML = to;
+  } else {
+   fromSlider.Value = from;
+   fromValue.innerHTML = from;
+  }
+}
+
+function controlToSlider(fromSlider, toSlider, toValue) {
+  const [from, to] = getParsed(fromSlider, toSlider);
+  if (from <= to) {
+    toSlider.value = to;
+    toValue.innerHTML = to;
+  } else {
+    toSlider.value = from;
+    toValue.innerHTML = from;
+  }
+}
+
+function getParsed(currentFrom, currentTo) {
+  const from = parseInt(currentFrom.value, 10);
+  const to = parseInt(currentTo.value, 10);
+  return [from, to];
+}
+
+
+
+const fromSliderCD = document.querySelector('#fromSliderCD');
+const toSliderCD = document.querySelector('#toSliderCD');
+const fromValueCD = document.querySelector('#fromValueCD');
+const toValueCD = document.querySelector('#toValueCD');
+const fromSliderFA = document.querySelector('#fromSliderFA');
+const toSliderFA = document.querySelector('#toSliderFA');
+const fromValueFA = document.querySelector('#fromValueFA');
+const toValueFA = document.querySelector('#toValueFA');
+
+
+
+
+fromSliderCD.oninput = () => controlFromSlider(fromSliderCD, toSliderCD, fromValueCD);
+toSliderCD.oninput = () => controlToSlider(fromSliderCD, toSliderCD, toValueCD);
+fromSliderFA.oninput = () => controlFromSlider(fromSliderFA, toSliderFA, fromValueFA);
+toSliderFA.oninput = () => controlToSlider(fromSliderFA, toSliderFA, toValueFA);
+</script>
+{{ end }}

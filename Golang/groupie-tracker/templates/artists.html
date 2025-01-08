@@ -1,0 +1,22 @@
+{{ define "artists" }}
+
+                
+        <div class="container">
+            <table>
+                {{ if .Artists }}
+                    {{ range .Artists }}
+                            <form action="#details" method="POST">
+                                <div>
+                                    <button class="indexbtn" name="band" type="submit" value="{{ .Id }}">
+                                        <img class="bandimage" src="{{ .Image }}" alt="Image">
+                                        <p class="bandname">{{ .Name }}</p>
+                                    </button>
+                                </div>
+                            </form>
+                    {{ end }} 
+                {{ else }}
+                    <p>No Result found!</p>
+                {{ end}}
+            </table>
+        </div>  
+        {{ end}}

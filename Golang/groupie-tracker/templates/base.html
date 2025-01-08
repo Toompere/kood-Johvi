@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, width=device-width">
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+        <link href="/static/favicon.ico" rel="icon">
+        <link href="/static/styles.css" rel="stylesheet">
+        <script type="text/javascript" src="/static/index.js"></script>
+
+        <title>Groupie Tracker</title>
+
+    </head>
+
+    <body>
+        <div class="home">
+            <a class="hometext" href="/">Groupie Tracker</a>    
+        </div>
+        {{ template "search" . }}
+        {{ template "filter" . }}
+        {{ template "details" . }}
+        {{ template "artists" .}}
+    </body>
+</html>
